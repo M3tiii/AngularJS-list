@@ -1,0 +1,12 @@
+<table style="width:100%">
+  <tr>
+    <th ng-repeat="header in $ctrl.headers">
+      {{header.name}}
+    </th>
+  </tr>
+  <tr ng-repeat="item in $ctrl.data">
+    <th ng-repeat="header in $ctrl.headers">
+      {{item[header.name]}}
+    </th>
+  </tr>
+</table>

@@ -1,11 +1,15 @@
 class listController {
 
-  constructor() {
-
+  constructor($scope) {
+    console.log(this, $scope);
   }
 }
 
 export const list = {
   template: require('./list.html'),
-  controller: listController
+  controller: listController,
+  bindings: {
+    headers: '<',
+    data: '<'
+  }
 };
