@@ -1,12 +1,36 @@
-<table style="width:100%">
-  <tr>
-    <th ng-repeat="header in $ctrl.headers">
-      {{header.name}}
-    </th>
-  </tr>
-  <tr ng-repeat="item in $ctrl.data">
-    <th ng-repeat="header in $ctrl.headers">
-      {{item[header.name]}}
-    </th>
-  </tr>
+<table class="table" style="width:100%">
+  <thead>
+    <tr>
+      <th/>
+      <th ng-repeat="header in $ctrl.headers">
+        {{header.title}}
+      </th>
+      <th>
+        <button class="btn btn-primary">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          Edit selected
+        </button>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in $ctrl.data">
+      <td><input type="checkbox"></td>
+      <td ng-repeat="header in $ctrl.headers">
+        <input class="noborder" type="text" ng-model="item[header.name]" ng-disabled="false"></input>
+      </td>
+      <td>
+        <div>
+          <button class="btn btn-primary">
+            <span class="glyphicon glyphicon-edit " aria-hidden="true "></span>
+            Edit
+          </button>
+          <button class="btn btn-danger ">
+            <span class="glyphicon glyphicon-remove " aria-hidden="true "></span>
+            Delete
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
 </table>

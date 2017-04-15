@@ -3,6 +3,7 @@ class listController {
   constructor($scope) {
     console.log(this, $scope);
   }
+
 }
 
 export const list = {
