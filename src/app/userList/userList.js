@@ -28,7 +28,7 @@ class userListController {
     }];
 
     $http
-      .get('app/userList/users.json')
+      .get('app/models/users.json')
       .then(response => {
         response.data.forEach(item => {
           item.date = new Date(item.date);

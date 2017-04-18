@@ -21,17 +21,7 @@ describe('user-list component', () => {
   });
 
   it('list should get users and render <list>', angular.mock.inject(($rootScope, $compile, $httpBackend) => {
-    $httpBackend.when('GET', 'app/userList/users.json').respond(usersJson);
-    // $rootScope.headers = [{
-    //   name: 'id',
-    //   title: 'id',
-    //   type: 'text'
-    // }, {
-    //   name: 'name',
-    //   title: 'name',
-    //   type: 'text'
-    // }];
-
+    $httpBackend.when('GET', 'app/models/users.json').respond(usersJson);
     const element = $compile('<user-list></user-list>')($rootScope);
     $httpBackend.flush();
     $rootScope.$digest();
