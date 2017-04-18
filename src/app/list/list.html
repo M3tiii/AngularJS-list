@@ -1,4 +1,5 @@
 <table class="table" style="width:100%">
+  {{name}}
   <thead>
     <tr>
       <th/>
@@ -6,27 +7,38 @@
         {{header.title}}
       </th>
       <th>
-        <button class="btn btn-primary">
+        <button ng-if="!$ctrl.isSelectedAll" class="btn btn-primary" ng-click="$ctrl.onEditSelected()">
           <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
           Edit selected
+        </button>
+        <button ng-if="$ctrl.isSelectedAll" class="btn btn-warning" ng-click="$ctrl.onSaveSelected()">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          Save selected
         </button>
       </th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="item in $ctrl.data">
-      <td><input type="checkbox"></td>
+    <tr class="item-row" ng-repeat="item in $ctrl.data">
+      <td>
+        <input type="checkbox" ng-model="item.isSelected" ng-click="$ctrl.onSelect(item)">
+      </td>
       <td ng-repeat="header in $ctrl.headers">
-        <input class="noborder" type="text" ng-model="item[header.name]" ng-disabled="false"></input>
+        <div ng-if="header.name == 'id'">{{item.id}}</div>
+        <input ng-if="header.name != 'id'" ng-class="item.isEdited ? 'item-edited' : 'item-clear'" type={{header.type}} ng-model="item[header.name]" ng-disabled="!item.isEdited"></input>
       </td>
       <td>
         <div>
-          <button class="btn btn-primary">
-            <span class="glyphicon glyphicon-edit " aria-hidden="true "></span>
+          <button ng-if="!item.isEdited" class="btn btn-primary" ng-click="$ctrl.onEdit(item)">
+            <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>
             Edit
           </button>
-          <button class="btn btn-danger ">
-            <span class="glyphicon glyphicon-remove " aria-hidden="true "></span>
+          <button ng-If="item.isEdited" class="btn btn-warning" ng-click="$ctrl.onSave(item)">
+            <span class="glyphicon glyphicon-edit " aria-hidden="true"></span>
+            Save
+          </button>
+          <button class="btn btn-danger" ng-click="$ctrl.onDelete(item)">
+            <span class="glyphicon glyphicon-remove " aria-hidden="true"></span>
             Delete
           </button>
         </div>
