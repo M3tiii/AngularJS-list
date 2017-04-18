@@ -3,12 +3,8 @@ class listController {
   constructor() {
     this.isSelectedAll = false;
     this.dataEdited = [];
-    // this.data = [];
-    // this.headers = [];
-    this.name = 'aaaaa';
-  }
-  sayHello() {
-    this.name = 'World';
+    this.data = [];
+    this.headers = [];
   }
 
   onEditSelected() {
@@ -53,7 +49,6 @@ class listController {
 
   _backupItem(item) {
     const indexEdited = this.dataEdited.map(item => item.id).indexOf(item.id);
-    console.log(item, this.dataEdited[indexEdited]);
     Object.assign(item, this.dataEdited[indexEdited]);
   }
 

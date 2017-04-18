@@ -20,7 +20,7 @@ describe('list component', () => {
     expect(element.find('table').length).toEqual(1);
   }));
 
-  it('should render 2 elements <list>', angular.mock.inject(($rootScope, $compile) => {
+  it('should render 2 item-row', angular.mock.inject(($rootScope, $compile) => {
     const scope = $rootScope.$new();
     const element = $compile('<list headers="headers" data="data"></list>')(scope);
 
